@@ -191,8 +191,9 @@
                     <!– 是否覆盖 –>
                     <overwrite>true</overwrite>
                     <!– 自动生成的配置 –>
+                    -->
                     <configurationFile>
-                        src/main/resources/generatorConfig.xml</configurationFile>-->
+                        src/main/resources/mybatis-generator.xml</configurationFile>
                 </configuration>
             </plugin>
         </plugins>

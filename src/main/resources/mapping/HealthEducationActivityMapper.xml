@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.imooc.netty.dao.HealthEducationActivityMapper">
+  <resultMap id="BaseResultMap" type="com.imooc.netty.pojo.HealthEducationActivity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="activity_time" jdbcType="TIMESTAMP" property="activityTime" />
+    <result column="activity_place" jdbcType="VARCHAR" property="activityPlace" />
+    <result column="activity_mode" jdbcType="VARCHAR" property="activityMode" />
+    <result column="activity_theme" jdbcType="VARCHAR" property="activityTheme" />
+    <result column="organizer" jdbcType="VARCHAR" property="organizer" />
+    <result column="learner_type" jdbcType="VARCHAR" property="learnerType" />
+    <result column="learner_num" jdbcType="INTEGER" property="learnerNum" />
+    <result column="material_type" jdbcType="VARCHAR" property="materialType" />
+    <result column="material_num" jdbcType="INTEGER" property="materialNum" />
+    <result column="activity_appraise" jdbcType="VARCHAR" property="activityAppraise" />
+    <result column="creator_id" jdbcType="INTEGER" property="creatorId" />
+    <result column="doctor_id" jdbcType="INTEGER" property="doctorId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.imooc.netty.pojo.HealthEducationActivity">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, org_id, activity_time, activity_place, activity_mode, activity_theme, organizer, 
+    learner_type, learner_num, material_type, material_num, activity_appraise, creator_id, 
+    doctor_id, create_time, state
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from health_education_activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from health_education_activity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.imooc.netty.pojo.HealthEducationActivity">
+    insert into health_education_activity (id, org_id, activity_time, 
+      activity_place, activity_mode, activity_theme, 
+      organizer, learner_type, learner_num, 
+      material_type, material_num, activity_appraise, 
+      creator_id, doctor_id, create_time, 
+      state, content)
+    values (#{id,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{activityTime,jdbcType=TIMESTAMP}, 
+      #{activityPlace,jdbcType=VARCHAR}, #{activityMode,jdbcType=VARCHAR}, #{activityTheme,jdbcType=VARCHAR}, 
+      #{organizer,jdbcType=VARCHAR}, #{learnerType,jdbcType=VARCHAR}, #{learnerNum,jdbcType=INTEGER}, 
+      #{materialType,jdbcType=VARCHAR}, #{materialNum,jdbcType=INTEGER}, #{activityAppraise,jdbcType=VARCHAR}, 
+      #{creatorId,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.imooc.netty.pojo.HealthEducationActivity">
+    insert into health_education_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="activityTime != null">
+        activity_time,
+      </if>
+      <if test="activityPlace != null">
+        activity_place,
+      </if>
+      <if test="activityMode != null">
+        activity_mode,
+      </if>
+      <if test="activityTheme != null">
+        activity_theme,
+      </if>
+      <if test="organizer != null">
+        organizer,
+      </if>
+      <if test="learnerType != null">
+        learner_type,
+      </if>
+      <if test="learnerNum != null">
+        learner_num,
+      </if>
+      <if test="materialType != null">
+        material_type,
+      </if>
+      <if test="materialNum != null">
+        material_num,
+      </if>
+      <if test="activityAppraise != null">
+        activity_appraise,
+      </if>
+      <if test="creatorId != null">
+        creator_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="activityTime != null">
+        #{activityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityPlace != null">
+        #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="activityMode != null">
+        #{activityMode,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTheme != null">
+        #{activityTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="organizer != null">
+        #{organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="learnerType != null">
+        #{learnerType,jdbcType=VARCHAR},
+      </if>
+      <if test="learnerNum != null">
+        #{learnerNum,jdbcType=INTEGER},
+      </if>
+      <if test="materialType != null">
+        #{materialType,jdbcType=VARCHAR},
+      </if>
+      <if test="materialNum != null">
+        #{materialNum,jdbcType=INTEGER},
+      </if>
+      <if test="activityAppraise != null">
+        #{activityAppraise,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.imooc.netty.pojo.HealthEducationActivity">
+    update health_education_activity
+    <set>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="activityTime != null">
+        activity_time = #{activityTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="activityPlace != null">
+        activity_place = #{activityPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="activityMode != null">
+        activity_mode = #{activityMode,jdbcType=VARCHAR},
+      </if>
+      <if test="activityTheme != null">
+        activity_theme = #{activityTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="organizer != null">
+        organizer = #{organizer,jdbcType=VARCHAR},
+      </if>
+      <if test="learnerType != null">
+        learner_type = #{learnerType,jdbcType=VARCHAR},
+      </if>
+      <if test="learnerNum != null">
+        learner_num = #{learnerNum,jdbcType=INTEGER},
+      </if>
+      <if test="materialType != null">
+        material_type = #{materialType,jdbcType=VARCHAR},
+      </if>
+      <if test="materialNum != null">
+        material_num = #{materialNum,jdbcType=INTEGER},
+      </if>
+      <if test="activityAppraise != null">
+        activity_appraise = #{activityAppraise,jdbcType=VARCHAR},
+      </if>
+      <if test="creatorId != null">
+        creator_id = #{creatorId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.imooc.netty.pojo.HealthEducationActivity">
+    update health_education_activity
+    set org_id = #{orgId,jdbcType=INTEGER},
+      activity_time = #{activityTime,jdbcType=TIMESTAMP},
+      activity_place = #{activityPlace,jdbcType=VARCHAR},
+      activity_mode = #{activityMode,jdbcType=VARCHAR},
+      activity_theme = #{activityTheme,jdbcType=VARCHAR},
+      organizer = #{organizer,jdbcType=VARCHAR},
+      learner_type = #{learnerType,jdbcType=VARCHAR},
+      learner_num = #{learnerNum,jdbcType=INTEGER},
+      material_type = #{materialType,jdbcType=VARCHAR},
+      material_num = #{materialNum,jdbcType=INTEGER},
+      activity_appraise = #{activityAppraise,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=INTEGER},
+      doctor_id = #{doctorId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.imooc.netty.pojo.HealthEducationActivity">
+    update health_education_activity
+    set org_id = #{orgId,jdbcType=INTEGER},
+      activity_time = #{activityTime,jdbcType=TIMESTAMP},
+      activity_place = #{activityPlace,jdbcType=VARCHAR},
+      activity_mode = #{activityMode,jdbcType=VARCHAR},
+      activity_theme = #{activityTheme,jdbcType=VARCHAR},
+      organizer = #{organizer,jdbcType=VARCHAR},
+      learner_type = #{learnerType,jdbcType=VARCHAR},
+      learner_num = #{learnerNum,jdbcType=INTEGER},
+      material_type = #{materialType,jdbcType=VARCHAR},
+      material_num = #{materialNum,jdbcType=INTEGER},
+      activity_appraise = #{activityAppraise,jdbcType=VARCHAR},
+      creator_id = #{creatorId,jdbcType=INTEGER},
+      doctor_id = #{doctorId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
