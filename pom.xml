@@ -46,6 +46,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional> <!-- 表示依赖不会传递 -->
             <scope>runtime</scope>
         </dependency>
 
@@ -150,6 +151,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork> <!-- 如果没有该配置，devtools不会生效 -->
+                </configuration>
             </plugin>
             <!--<plugin>
                 &lt;!&ndash;Mybatis-generator插件,用于自动生成Mapper和POJO&ndash;&gt;
